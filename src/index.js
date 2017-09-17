@@ -1,3 +1,5 @@
+// consider how to use FP
+
 // event: start, drag, stop
 //
 
