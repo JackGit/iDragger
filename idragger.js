@@ -1,7 +1,11 @@
 class Dragger {
   constructor (el) {
     this.el = el
+
+    // when drag start, the startPosition is target position
     this.startPosition = { x: 0, y : 0 }
+
+    // when drag start, startX, startY is the event start position
     this.startX = 0
     this.startY = 0
     this.started = false
