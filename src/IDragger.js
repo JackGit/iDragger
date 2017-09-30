@@ -1,3 +1,12 @@
+/**
+ * A lib to make any thing draggable. Any dom, canvas element, a display object of pixi.js, etc
+ * To make it happen, the TARGET needs to have:
+ *    1. way to bind and unbind event
+ *    2. equivalent events of touchstart, touchmove, touchend
+ *    3. method to get current position
+ *    4. way to set current position
+ */
+
 // consider how to use FP
 
 // event: start, drag, stop
@@ -11,7 +20,7 @@
 
 export default iDragger = function (options) {
   return function (target) {
-    
+
   }
 }
 

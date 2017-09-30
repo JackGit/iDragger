@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jackgit/iDragger/issues"
   },
-  "homepage": "https://github.com/jackgit/iDragger#readme"
+  "homepage": "https://github.com/jackgit/iDragger#readme",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
 }
