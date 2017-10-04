@@ -1,6 +1,8 @@
 // TODO: support grid drag as plugin
 // TODO: support drag by axis as plugin
 // TODO: emit event: dragstart, dragmove, dragend
+// TODO: support touch
+// TODO: pan? pinch? zoom?
 
 class Dragger {
   constructor (el) {
@@ -66,8 +68,9 @@ class Dragger {
   }
 
   setPosition (x, y) {
-    this.el.style.top = y + 'px'
-    this.el.style.left = x + 'px'
+    // this.el.style.top = y + 'px'
+    // this.el.style.left = x + 'px'
+    this.el.style.transform = `translateX(${x}px) translateY(${y}px)`
   }
 
   destroy () {}
