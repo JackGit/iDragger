@@ -1,3 +1,7 @@
+// TODO: support grid drag as plugin
+// TODO: support drag by axis as plugin
+// TODO: emit event: dragstart, dragmove, dragend
+
 class Dragger {
   constructor (el) {
     this.el = el
@@ -8,7 +12,9 @@ class Dragger {
     // when drag start, startX, startY is the event start position
     this.startX = 0
     this.startY = 0
-    this.started = false
+
+    this._move = this._move.bind(this)
+    this._end = this._end.bind(this)
     this._init()
   }
 
@@ -21,9 +27,6 @@ class Dragger {
 
   _bindEvent () {
     this.el.addEventListener('mousedown', this._start.bind(this))
-    this.el.addEventListener('mousemove', this._move.bind(this))
-    this.el.addEventListener('mouseup', this._end.bind(this))
-    this.el.addEventListener('mouseleave', this._end.bind(this))
   }
 
   _unbindEvent () {}
@@ -31,16 +34,14 @@ class Dragger {
   _start (e) {
     const { clientX, clientY } = e
     this.startPosition = this.getPosition()
-    this.started = true
     this.startX = clientX
     this.startY = clientY
+
+    document.addEventListener('mousemove', this._move)
+    document.addEventListener('mouseup', this._end)
   }
 
   _move (e) {
-    if (!this.started) {
-      return
-    }
-
     const { clientX, clientY } = e
     const offsetX = clientX - this.startX
     const offsetY = clientY - this.startY
@@ -52,7 +53,8 @@ class Dragger {
   }
 
   _end () {
-    this.started = false
+    document.removeEventListener('mousemove', this._move)
+    document.removeEventListener('mouseup', this._end)
   }
 
   getPosition () {
